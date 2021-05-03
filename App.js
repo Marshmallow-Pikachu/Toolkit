@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SettingScreen from './src/screens/SettingScreen';
 import CalculatorScreen from './src/screens/CalculatorScreen';
+import Colors from './src/Colors';
 
 const App = () => {
   // For navigation
@@ -15,7 +16,13 @@ const App = () => {
         <Stack.Screen
           name="main"
           component={SettingScreen}
-          options={{headerShown: false}}
+          options={{
+            headerTitleAlign: 'center',
+            headerTitle: 'CONTROL PANEL',
+            headerStyle: {
+              backgroundColor: Colors.primaryDark,
+            },
+          }}
         />
         <Stack.Screen name="calculator" component={CalculatorScreen} />
       </Stack.Navigator>

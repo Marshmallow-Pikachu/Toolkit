@@ -6,7 +6,7 @@ import ButtonRow from './ButtonRow';
 import styles from './style';
 
 const Calculator = () => {
-  const [displayText, setDisplayText] = useState('-1');
+  const [displayText, setDisplayText] = useState('');
 
   const addNumber = char => {
     const lastChar = displayText.substr(-1);
@@ -268,8 +268,7 @@ const Calculator = () => {
   return (
     <View>
       <Display text={displayText} />
-      <View
-        style={styles.buttonPadStyle}>
+      <View style={styles.buttonPadStyle}>
         <ButtonRow>
           <Button label="C" onPress={clearDisplay} />
           <Button label="( )" onPress={addBrackets} />

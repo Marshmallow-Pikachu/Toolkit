@@ -1,11 +1,12 @@
-import React from 'react';
-import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {TouchableOpacity, Text, StyleSheet, Switch} from 'react-native';
 import {width} from '../Dimensions';
 
 const TorchOption = () => {
   return (
     <TouchableOpacity style={styles.containerStyle}>
       <Text style={styles.textStyle}>Flashlight</Text>
+      <Switch />
     </TouchableOpacity>
   );
 };
@@ -15,8 +16,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: '#bbf',
     width: width * 0.8,
-    marginVertical: width * 0.02,
+    marginVertical: width * 0.01,
     borderRadius: 10,
+    flexDirection: 'row',
   },
   textStyle: {
     fontSize: 25,
