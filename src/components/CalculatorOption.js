@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: '#bbf',
     width: width * 0.8,
-    marginVertical: width * 0.02,
+    marginVertical: width * 0.01,
     borderRadius: 10,
   },
   textStyle: {
