@@ -7,10 +7,14 @@ import styles from './style';
 
 const Calculator = () => {
   const [displayText, setDisplayText] = useState('');
+  const [isResult, setResult] = useState(false);
 
   const addNumber = char => {
     const lastChar = displayText.substr(-1);
-    if (lastChar === ')') {
+    if (isResult) {
+      setResult(!isResult);
+      setDisplayText(char);
+    } else if (lastChar === ')') {
       setDisplayText(displayText + '×' + char);
     } else {
       setDisplayText(displayText + char);
@@ -18,6 +22,9 @@ const Calculator = () => {
   };
 
   const addOperator = char => {
+    if (isResult) {
+      setResult(!isResult);
+    }
     const symbols = ['÷', '×', '-', '+'];
     const lastChar = displayText.substr(-1);
     if (displayText.length === 0 || (lastChar === '(' && char !== '-')) {
@@ -34,6 +41,9 @@ const Calculator = () => {
     const lastNum = equation[equation.length - 1];
     if (lastNum.endsWith(')')) {
       setDisplayText(displayText + '×0.');
+    } else if (isResult) {
+      setDisplayText('0.');
+      setResult(!isResult);
     } else if (lastNum === '') {
       setDisplayText(displayText + '0.');
     } else if (lastNum.indexOf('.') === -1) {
@@ -44,6 +54,9 @@ const Calculator = () => {
   };
 
   const negativePositive = () => {
+    if (isResult) {
+      setResult(!isResult);
+    }
     const equation = displayText.split(/[÷×\-+(]/);
     const lastNum = equation[equation.length - 1];
     const lastNumIndex = displayText.lastIndexOf(lastNum);
@@ -70,6 +83,9 @@ const Calculator = () => {
   };
 
   const addBrackets = () => {
+    if (isResult) {
+      setResult(!isResult);
+    }
     const equation = displayText.split(/[÷×\-+(]/);
     const lastNum = equation[equation.length - 1];
     const lastNumIndex = displayText.lastIndexOf(lastNum);
@@ -100,6 +116,9 @@ const Calculator = () => {
   };
 
   const addPercentage = () => {
+    if (isResult) {
+      setResult(!isResult);
+    }
     const equation = displayText.split(/[÷×\-+(]/);
     const lastNum = equation[equation.length - 1];
     const percentageExist = lastNum.indexOf('%');
@@ -151,6 +170,19 @@ const Calculator = () => {
     return equation;
   };
 
+  const turnExponent = equation => {
+    if (equation.length < 3) {
+      return equation;
+    }
+    for (let i = 0; i < equation.length; i++) {
+      if (equation[i].endsWith('e')) {
+        equation.splice(i, 3, equation[i] + equation[i + 1] + equation[i + 2]);
+        console.log(equation)
+      }
+    }
+    return equation;
+  };
+
   const calculate = () => {
     if (!displayText) {
       return;
@@ -161,6 +193,7 @@ const Calculator = () => {
       equation.splice(empty, 1);
       empty = equation.indexOf('');
     }
+    turnExponent(equation);
     turnNegative(equation);
     console.log('before loop', equation);
     // need to loop this safely
@@ -195,7 +228,6 @@ const Calculator = () => {
         right - left === 2
       ) {
         equation.splice(left, 3, equation[left + 1]);
-        console.log('bracket splice', equation);
         continue;
       }
       // find percentage if any
@@ -204,7 +236,6 @@ const Calculator = () => {
         sub = [equation[perop - 1], '÷', '100'];
         result = equate(sub);
         equation.splice(perop - 1, 2, result);
-        console.log('percentage', equation);
         if (isNaN(result)) {
           break;
         }
@@ -226,7 +257,6 @@ const Calculator = () => {
         sub = equation.slice(op - 1, op + 2);
         result = equate(sub);
         equation.splice(op - 1, 3, result);
-        console.log('mulitdiv splice', equation);
         if (isNaN(result)) {
           break;
         }
@@ -250,7 +280,6 @@ const Calculator = () => {
         sub = equation.slice(op - 1, op + 2);
         result = equate(sub);
         equation.splice(op - 1, 3, result);
-        console.log('plusminus', equation);
         if (isNaN(result)) {
           break;
         }
@@ -261,7 +290,7 @@ const Calculator = () => {
       }
     }
     result = equation[0];
-    console.log(result);
+    setResult(true);
     setDisplayText(result.toString());
   };
 

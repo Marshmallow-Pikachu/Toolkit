@@ -5,25 +5,27 @@ import Colors from '../Colors';
 
 const SettingScreen = ({navigation}) => {
   return (
-    <View style={{backgroundColor: Colors.secondary, flex: 1}}>
+    <View style={styles.backgroundStyle}>
       <ControlGroup title="Connection &amp; Security Settings">
-        <ControlTile label="Manage Mobile Data" />
-        <ControlTile label="Manage Screen Lock Pin" />
-        <ControlTile label="Fingerprint Registration" />
+        <ControlTile label="Manage Mobile Data" disabled />
+        <ControlTile label="Manage Screen Lock Pin" disabled />
+        <ControlTile label="Fingerprint Registration" disabled />
       </ControlGroup>
 
       <ControlGroup title="Display Settings">
-        <ControlTile label="Auto Brightness" />
-        <ControlTile label="Auto Rotate" />
-        <ControlTile label="Blue Light Filter" />
+        <ControlTile label="Auto Brightness" image="brightness" />
+        <ControlTile label="Auto Rotate" image="rotate" />
+        <ControlTile label="Blue Light Filter" image="blueLight" />
         <ControlSlider label="Brightness" />
       </ControlGroup>
-      
+
       <ControlGroup title="Useful Tools">
-        <ControlTile label="Flashlight" />
+        <ControlTile label="Flashlight" image="flashlight" />
         <ControlTile
           label="Calculator"
+          image="calculator"
           onPress={() => navigation.navigate('calculator')}
+          disabled
         />
       </ControlGroup>
     </View>
@@ -31,11 +33,9 @@ const SettingScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  titleStyle: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    textDecorationLine: 'underline',
+  backgroundStyle: {
+    backgroundColor: Colors.secondary,
+    flex: 1,
   },
 });
 

@@ -1,10 +1,10 @@
 const Colors = {
-  primary: '#1e88e5',
-  primaryLight: '#6ab7ff',
-  primaryDark: '#005cb2',
-  secondary: '#e0e0e0',
-  secondaryLight: '#ffffff',
-  secondaryDark: '#aeaeae',
+  primary: '#383D3B',
+  secondary: '#FFF',
+  tilesActive: '#3390FF',
+  tilesInactive: '#E3E2E7',
+  fontColor: '#000',
+  header: '#DFDFDF',
 };
 
 export default Colors;
