@@ -9,8 +9,9 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
   },
   displayTextStyle: {
-    fontSize: 20,
+    fontSize: 35,
     marginHorizontal: '5%',
+    textAlign: 'right',
   },
   buttonRowStyle: {
     flexDirection: 'row',

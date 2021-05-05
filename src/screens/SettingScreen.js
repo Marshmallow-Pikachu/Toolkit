@@ -1,15 +1,22 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {ControlGroup, ControlSlider, ControlTile} from '../components/Control';
+import {View, StyleSheet} from 'react-native';
+import {
+  ControlGroup,
+  ControlSlider,
+  ControlTile,
+  DataTile,
+  FingerprintTile,
+  TorchTile,
+} from '../components/Control';
 import Colors from '../Colors';
 
 const SettingScreen = ({navigation}) => {
   return (
     <View style={styles.backgroundStyle}>
       <ControlGroup title="Connection &amp; Security Settings">
-        <ControlTile label="Manage Mobile Data" disabled />
+        <DataTile />
         <ControlTile label="Manage Screen Lock Pin" disabled />
-        <ControlTile label="Fingerprint Registration" disabled />
+        <FingerprintTile />
       </ControlGroup>
 
       <ControlGroup title="Display Settings">
@@ -20,7 +27,7 @@ const SettingScreen = ({navigation}) => {
       </ControlGroup>
 
       <ControlGroup title="Useful Tools">
-        <ControlTile label="Flashlight" image="flashlight" />
+        <TorchTile />
         <ControlTile
           label="Calculator"
           image="calculator"

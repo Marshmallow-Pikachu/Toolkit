@@ -9,7 +9,17 @@ const Calculator = () => {
   const [displayText, setDisplayText] = useState('');
   const [isResult, setResult] = useState(false);
 
+  const maxInput = () => {
+    if (displayText.length >= 200) {
+      return true;
+    }
+    return false;
+  };
+
   const addNumber = char => {
+    if (maxInput()) {
+      return;
+    }
     const lastChar = displayText.substr(-1);
     if (isResult) {
       setResult(!isResult);
@@ -22,6 +32,9 @@ const Calculator = () => {
   };
 
   const addOperator = char => {
+    if (maxInput()) {
+      return;
+    }
     if (isResult) {
       setResult(!isResult);
     }
@@ -37,6 +50,9 @@ const Calculator = () => {
   };
 
   const addDecimal = () => {
+    if (maxInput()) {
+      return;
+    }
     const equation = displayText.split(/[÷×\-+(]/);
     const lastNum = equation[equation.length - 1];
     if (lastNum.endsWith(')')) {
@@ -54,6 +70,9 @@ const Calculator = () => {
   };
 
   const negativePositive = () => {
+    if (maxInput()) {
+      return;
+    }
     if (isResult) {
       setResult(!isResult);
     }
@@ -83,6 +102,9 @@ const Calculator = () => {
   };
 
   const addBrackets = () => {
+    if (maxInput()) {
+      return;
+    }
     if (isResult) {
       setResult(!isResult);
     }
@@ -116,6 +138,9 @@ const Calculator = () => {
   };
 
   const addPercentage = () => {
+    if (maxInput()) {
+      return;
+    }
     if (isResult) {
       setResult(!isResult);
     }
@@ -124,6 +149,14 @@ const Calculator = () => {
     const percentageExist = lastNum.indexOf('%');
     if (percentageExist === -1 && lastNum !== '') {
       setDisplayText(displayText + '%');
+    }
+  };
+
+  const backspaceDisplay = () => {
+    if (displayText.endsWith("NaN")) {
+      setDisplayText(displayText.substr(0, displayText.length - 3));
+    } else {
+      setDisplayText(displayText.substr(0, displayText.length - 1));
     }
   };
 
@@ -177,7 +210,7 @@ const Calculator = () => {
     for (let i = 0; i < equation.length; i++) {
       if (equation[i].endsWith('e')) {
         equation.splice(i, 3, equation[i] + equation[i + 1] + equation[i + 2]);
-        console.log(equation)
+        console.log(equation);
       }
     }
     return equation;
@@ -219,7 +252,7 @@ const Calculator = () => {
         left = equation.lastIndexOf('(');
       }
       if (equation.includes(')')) {
-        right = equation.lastIndexOf(')');
+        right = equation.indexOf(')');
       }
       // remove redundant brackets
       if (
@@ -228,6 +261,7 @@ const Calculator = () => {
         right - left === 2
       ) {
         equation.splice(left, 3, equation[left + 1]);
+        console.log(equation);
         continue;
       }
       // find percentage if any
@@ -291,6 +325,9 @@ const Calculator = () => {
     }
     result = equation[0];
     setResult(true);
+    if (isNaN(result)) {
+      result = NaN;
+    }
     setDisplayText(result.toString());
   };
 
@@ -299,7 +336,11 @@ const Calculator = () => {
       <Display text={displayText} />
       <View style={styles.buttonPadStyle}>
         <ButtonRow>
-          <Button label="C" onPress={clearDisplay} />
+          <Button
+            label="⌫"
+            onPress={backspaceDisplay}
+            onLongPress={clearDisplay}
+          />
           <Button label="( )" onPress={addBrackets} />
           <Button label="%" onPress={addPercentage} />
           <Button

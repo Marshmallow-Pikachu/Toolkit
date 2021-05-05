@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {ScrollView, Text} from 'react-native';
 import styles from './style';
 
 const Display = ({text}) => {
   return (
-    <View style={styles.displayStyle}>
+    <ScrollView style={styles.displayStyle}>
       <Text style={styles.displayTextStyle}>{text}</Text>
-    </View>
+    </ScrollView>
   );
 };
 

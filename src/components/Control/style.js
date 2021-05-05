@@ -3,16 +3,16 @@ import {width, height} from '../../Dimensions';
 import Colors from '../../Colors';
 
 const styles = StyleSheet.create({
-  groupStyle: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-  },
   titleStyle: {
     fontSize: 20,
     marginLeft: width / 50,
     marginBottom: height / 100,
     textDecorationLine: 'underline',
     color: Colors.fontColor,
+  },
+  groupStyle: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
   },
   groupContainerStyle: {
     marginHorizontal: width / 50,
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
     color: Colors.fontColor,
-    flex: 0.5,
+    flex: 0.6,
   },
   sliderContainerStyle: {
     alignItems: 'flex-start',
@@ -61,6 +61,66 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     height: width * 0.1,
     width: width * 0.9,
+  },
+  modalStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'rgba(150, 150, 150, 0.5)',
+  },
+  popupStyle: {
+    alignSelf: 'center',
+    backgroundColor: '#fff',
+    borderColor: '#bbb',
+    borderRadius: 10,
+    borderWidth: 1,
+    margin: width * 0.1,
+    padding: width * 0.1,
+  },
+  popupButtonContainerStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: height * 0.02,
+  },
+  positiveButtonStyle: {
+    justifyContent: 'center',
+    backgroundColor: '#7bf',
+    borderColor: '#7bf',
+    borderRadius: 5,
+    borderWidth: 1,
+    width: width * 0.25,
+    height: height * 0.07,
+  },
+  popupPositiveTextStyle: {
+    alignSelf: 'center',
+    color: '#fff',
+  },
+  negativeButtonStyle: {
+    justifyContent: 'center',
+    backgroundColor: '#f77',
+    borderColor: '#f77',
+    borderRadius: 5,
+    borderWidth: 1,
+    width: width * 0.25,
+    height: height * 0.07,
+  },
+  popupNegativeTextStyle: {
+    alignSelf: 'center',
+    color: '#fff',
+  },
+  popupTitleStyle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
+  },
+  popupTextContainerStyle: {
+    flexDirection: 'row',
+    marginTop: 5,
+  },
+  popupTextStyle: {
+    fontSize: 16,
+  },
+  popupIndexStyle: {
+    fontSize: 16,
   },
 });
 
