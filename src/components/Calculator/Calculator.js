@@ -24,7 +24,7 @@ const Calculator = () => {
     if (isResult) {
       setResult(!isResult);
       setDisplayText(char);
-    } else if (lastChar === ')') {
+    } else if (lastChar === ')' || lastChar === '%') {
       setDisplayText(displayText + '×' + char);
     } else {
       setDisplayText(displayText + char);

@@ -18,6 +18,7 @@ const TorchTile = () => {
       label="Flashlight"
       image="flashlight"
       onPress={() => switchTorch()}
+      activeState={isTorchOn}
     />
   );
 };

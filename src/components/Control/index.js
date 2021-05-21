@@ -4,3 +4,7 @@ export * from './ControlSlider';
 export * from './FingerprintTile';
 export * from './TorchTile';
 export * from './DataTile';
+export * from './BrightnessSlider';
+export * from './BrightnessModeTile';
+export * from './RotationTile';
+export * from './PasswordTile';
