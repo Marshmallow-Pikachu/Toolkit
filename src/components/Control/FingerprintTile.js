@@ -3,17 +3,15 @@ import {Modal, Text, View, TouchableOpacity} from 'react-native';
 import {ControlTile} from './ControlTile';
 import ConfirmButtons from './ConfimButtons';
 import FingerprintInfo from './FingerprintInfo';
-import IntentLauncher from 'react-native-intent-launcher';
 import styles from './style';
+import Toolkit from '../../Toolkit';
 
 const FingerprintTile = () => {
   const [popup, setPopup] = useState(false);
 
   const registerFingerprint = () => {
     setPopup(false);
-    IntentLauncher.startActivity({
-      action: 'android.settings.FINGERPRINT_ENROLL',
-    });
+    Toolkit.registerFingerprint();
   };
 
   return (
@@ -21,7 +19,6 @@ const FingerprintTile = () => {
       <ControlTile
         label="Fingerprint Registration"
         onPress={() => setPopup(true)}
-        disabled
       />
       <Modal transparent visible={popup}>
         <View style={styles.modalStyle}>

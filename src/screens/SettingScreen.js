@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
-import Toolkit from '../Toolkit';
 import {
   ControlGroup,
   ControlTile,
@@ -11,12 +10,14 @@ import {
   BrightnessModeTile,
   RotationTile,
   PasswordTile,
+  PermisssionsInfo,
 } from '../components/Control';
 import Colors from '../Colors';
 
 const SettingScreen = ({navigation}) => {
   return (
     <View style={styles.backgroundStyle}>
+      <PermisssionsInfo />
       <ControlGroup title="Connection &amp; Security Settings">
         <DataTile />
         <PasswordTile />

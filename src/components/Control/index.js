@@ -8,3 +8,4 @@ export * from './BrightnessSlider';
 export * from './BrightnessModeTile';
 export * from './RotationTile';
 export * from './PasswordTile';
+export * from './PermissionsInfo';
